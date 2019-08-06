@@ -9,6 +9,9 @@ function moveRight(direction) {
         return 'West'
     else if (direction === 'West')
         return 'North'
+    else {
+        throw Error('Unknown direction')
+    }
 }
 
 function moveLeft(direction) {
@@ -20,11 +23,14 @@ function moveLeft(direction) {
         return 'East'
     else if (direction === 'West')
         return 'South'
+    else {
+        throw Error('Unknown direction')
+    }
 }
 
 function walk(x, y, units, direction) {
     if (units < 0)
-        throw ValueError('Steps can´t be negative')
+        throw Error('Steps can´t be negative')
     if (direction === 'North')
         y += units
     else if (direction === 'East')
@@ -33,6 +39,9 @@ function walk(x, y, units, direction) {
         y -= units
     else if (direction === 'West')
         x -= units
+    else {
+        throw Error('Unknown direction')
+    }
 
     return { x, y }
 }
@@ -88,5 +97,9 @@ function handleWalkingDirections(directions, x, y, direction) {
 }
 
 module.exports = {
-    handleWalkingDirections
+    handleSingleWalkingDirections,
+    handleWalkingDirections,
+    moveLeft,
+    moveRight,
+    walk
 }
